@@ -35,17 +35,19 @@ public class Main {
         System.out.println("Введите год выпуска вашего смартфона");
         int clientDeviceYear = scanner.nextInt();
 
-        String  report = clientOS ? clientDeviceYear >= 2015 ? "Установите версию приложения для Android по ссылке" : "Установите облегченную версию приложения для Android по ссылке"
-                                  : clientDeviceYear >= 2015 ? "Установите версию приложения для iOS по ссылке" : "Установите облегченную версию приложения для iOS по ссылке";
-        System.out.println(report);
+        if(clientOS) {
+            if (clientDeviceYear >= 2015) System.out.println("Установите версию приложения для Android по ссылке");
+            else System.out.println("Установите облегченную версию приложения для Android по ссылке");
+        } else if (clientDeviceYear >= 2015) System.out.println( "Установите версию приложения для iOS по ссылке");
+            else System.out.println("Установите облегченную версию приложения для iOS по ссылке");
     }
 
     public static void isLeapYear(){
         System.out.println("Введите год");
         Scanner scanner = new Scanner(System.in);
         short year = scanner.nextShort();
-        String report = year >= 1584 && year % 4 == 0 && (year % 100 != 0 || year% 400 ==0) ? year + " год является високосным" : year + " год не является високосным";
-        System.out.println(report);
+        if (year >= 1584 && year % 4 == 0 && (year % 100 != 0 || year% 400 ==0)) System.out.println(year + " год является високосным");
+        else System.out.println(year + " год не является високосным");
     }
     public static void deliveryDaysCalculation() {
         System.out.println("Введите расстояние от офиса до адреса доставки");
